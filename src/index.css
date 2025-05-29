@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .btn {
+    @apply font-display py-3 px-6 rounded-xl text-lg font-bold transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-dark;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary hover:bg-primary-dark text-white focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary hover:bg-secondary-dark text-white focus:ring-secondary;
+  }
+  
+  .btn-accent {
+    @apply btn bg-accent hover:bg-accent-dark text-background-dark focus:ring-accent;
+  }
+  
+  .card {
+    @apply bg-background-light rounded-2xl p-6 shadow-lg border-2 border-background-light hover:border-primary/30 transition-all duration-300;
+  }
+  
+  .input {
+    @apply bg-background-dark border-2 border-background text-text rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary/20 text-primary-light;
+  }
+  
+  .badge-secondary {
+    @apply badge bg-secondary/20 text-secondary-light;
+  }
+  
+  .badge-accent {
+    @apply badge bg-accent/20 text-accent-dark;
+  }
+  
+  .heading {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  .subheading {
+    @apply font-display text-xl md:text-2xl lg:text-3xl font-bold;
+  }
+}
+
+/* Age group colors */
+.age-0-5 {
+  @apply text-green-400;
+}
+
+.age-6-10 {
+  @apply text-blue-400;
+}
+
+.age-11-15 {
+  @apply text-purple-400;
+}
+
+.age-16-20 {
+  @apply text-red-400;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
