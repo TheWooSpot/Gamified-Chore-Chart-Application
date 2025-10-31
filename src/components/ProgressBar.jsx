@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 
 const ProgressBar = ({ value, max, label, color = 'primary', size = 'md', showLabel = true }) => {

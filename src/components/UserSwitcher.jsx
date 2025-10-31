@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaUserCircle, FaChevronDown } from 'react-icons/fa'
 import { useUser } from '../context/UserContext'

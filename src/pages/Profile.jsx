@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaStar, FaTrophy, FaClipboardList, FaCalendarAlt, FaChartLine } from 'react-icons/fa'
 

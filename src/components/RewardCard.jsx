@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaStar, FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { useUser } from '../context/UserContext'
