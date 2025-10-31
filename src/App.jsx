@@ -10,7 +10,8 @@ import Footer from './components/Footer'
 import Dashboard from './pages/Dashboard'
 import ChoreList from './pages/ChoreList'
 import Leaderboard from './pages/Leaderboard'
-import Marketplace from './pages/Marketplace'
+import EnhancedMarketplace from './pages/EnhancedMarketplace'
+import SponsorDashboard from './pages/SponsorDashboard'
 import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
 
@@ -32,7 +33,8 @@ function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/chores" element={<ChoreList />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/marketplace" element={<Marketplace />} />
+                <Route path="/marketplace" element={<EnhancedMarketplace />} />
+                <Route path="/sponsor" element={<SponsorDashboard />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
