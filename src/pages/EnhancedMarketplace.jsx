@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaFilter, FaGlobe, FaHeart, FaStar, FaTimes, FaArrowRight, FaCheck } from 'react-icons/fa';
 import { supabase } from '../lib/supabase';

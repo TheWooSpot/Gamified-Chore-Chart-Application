@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGlobe, FaHeart, FaDollarSign, FaUsers, FaChartLine, FaTrophy } from 'react-icons/fa';
 import { supabase } from '../lib/supabase';
