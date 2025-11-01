@@ -64,7 +64,7 @@ const SponsorDashboard = () => {
       initial={{ opacity: 0.9 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.15 }}
-      className="glass-card p-6 hover:scale-105 transition-transform"
+      className="glass-card p-8"
     >
       <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center mb-4`}>
         <Icon className="text-white text-2xl" />

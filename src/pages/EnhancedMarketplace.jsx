@@ -90,7 +90,8 @@ const EnhancedMarketplace = () => {
             src={reward.image_url}
             alt={reward.title}
             loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover"
+            style={{ willChange: 'transform' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
@@ -135,17 +136,17 @@ const EnhancedMarketplace = () => {
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-4 border-t border-white/20">
+        <div className="flex items-center justify-between pt-5 border-t border-white/20">
           <div className="flex items-center gap-2">
-            <FaStar className="text-accent" />
-            <span className="font-display text-2xl font-bold text-primary">
+            <FaStar className="text-accent text-xl" />
+            <span className="font-display text-3xl font-bold text-primary">
               {reward.points_cost}
             </span>
-            <span className="text-text-muted text-sm">points</span>
+            <span className="text-text-muted text-base">points</span>
           </div>
 
           <button
-            className={`btn-sm flex items-center gap-2 ${
+            className={`px-6 py-3 rounded-xl font-bold text-base transition-all duration-200 flex items-center gap-2 ${
               canAfford
                 ? 'bg-gradient-to-r from-primary to-primary-light text-white'
                 : 'bg-background-dark text-text-muted cursor-not-allowed'
@@ -320,20 +321,21 @@ const EnhancedMarketplace = () => {
   return (
     <div className="min-h-screen pb-20">
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0.95 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15 }}
         className="mb-12 text-center"
       >
         <h1 className="heading mb-4 animate-float">
           Global Impact Marketplace
         </h1>
-        <p className="text-xl text-text-muted max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
           Redeem your chore points for amazing rewards or fund life-changing projects around the world.
           Every point makes a difference!
         </p>
 
         <div className="flex items-center justify-center gap-4 mt-6">
-          <div className="glass-card px-8 py-4">
+          <div className="glass-card px-10 py-5">
             <div className="flex items-center gap-3">
               <FaStar className="text-accent text-3xl" />
               <div className="text-left">
@@ -354,7 +356,7 @@ const EnhancedMarketplace = () => {
               placeholder="Search rewards and impact projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-white/60 border-2 border-white/80 rounded-2xl text-text placeholder:text-text-muted focus:outline-none focus:ring-4 focus:ring-primary/30 focus:border-primary/50 transition-all"
+              className="w-full pl-12 pr-4 py-5 text-lg bg-white/60 border-2 border-white/80 rounded-2xl text-text placeholder:text-text-muted focus:outline-none focus:ring-4 focus:ring-primary/30 focus:border-primary/50 transition-all"
             />
           </div>
 
@@ -431,7 +433,7 @@ const EnhancedMarketplace = () => {
                 <h2 className="section-title">Global Impact Projects</h2>
                 <span className="badge badge-success">{impactProjects.length}</span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {impactProjects.map((reward, index) => (
                   <RewardCard key={reward.id} reward={reward} index={index} />
                 ))}
@@ -449,7 +451,7 @@ const EnhancedMarketplace = () => {
                 <h2 className="section-title">Personal Rewards</h2>
                 <span className="badge badge-secondary">{regularRewards.length}</span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {regularRewards.map((reward, index) => (
                   <RewardCard key={reward.id} reward={reward} index={index} />
                 ))}

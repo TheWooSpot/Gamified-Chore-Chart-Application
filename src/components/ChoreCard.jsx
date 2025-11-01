@@ -52,7 +52,6 @@ const ChoreCard = ({ chore }) => {
       
       <motion.div
         className={`card h-full ${isCompleted ? 'opacity-70' : ''}`}
-        whileHover={{ scale: 1.02 }}
         initial={{ opacity: 0.8, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
@@ -71,24 +70,24 @@ const ChoreCard = ({ chore }) => {
           </div>
         </div>
 
-        <h3 className="font-display text-xl mb-2">{chore.title}</h3>
-        <p className="text-text-muted mb-4">{chore.description}</p>
+        <h3 className="font-display text-2xl mb-3">{chore.title}</h3>
+        <p className="text-text-muted mb-6 text-base leading-relaxed">{chore.description}</p>
 
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
-            <FaStar className="text-accent mr-1" />
-            <span className="font-bold">{chore.points} points</span>
+            <FaStar className="text-accent mr-2 text-xl" />
+            <span className="font-bold text-lg">{chore.points} points</span>
           </div>
           <div className="flex items-center text-text-muted">
-            <FaClock className="mr-1" />
-            <span>{chore.estimated_time} min</span>
+            <FaClock className="mr-2 text-lg" />
+            <span className="text-base">{chore.estimated_time} min</span>
           </div>
         </div>
         
         <button
           onClick={handleComplete}
           disabled={isCompleted}
-          className={`w-full py-3 px-4 rounded-xl font-bold flex items-center justify-center transition-all duration-200 ${
+          className={`w-full py-4 px-6 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-200 ${
             isCompleted 
               ? 'bg-success/30 text-success cursor-default' 
               : 'bg-primary hover:bg-primary-dark text-white'

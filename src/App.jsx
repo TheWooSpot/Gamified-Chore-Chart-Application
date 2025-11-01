@@ -24,7 +24,7 @@ function App() {
       <ChoreProvider>
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <main className="flex-grow container mx-auto px-4 py-8">
+          <main className="flex-grow container mx-auto px-6 md:px-8 lg:px-12 py-12">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/chores" element={<ChoreList />} />

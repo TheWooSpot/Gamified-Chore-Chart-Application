@@ -80,24 +80,24 @@ const Dashboard = () => {
       variants={containerVariants}
     >
       {/* Header Section */}
-      <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+      <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
         <div>
-          <h1 className="heading mb-2">Welcome, {currentUser.name}!</h1>
-          <p className="text-text-muted">Let's see what chores you can tackle today.</p>
+          <h1 className="heading">Welcome, {currentUser.name}!</h1>
+          <p className="text-text-muted text-lg">Let's see what chores you can tackle today.</p>
         </div>
         <UserSwitcher />
       </motion.div>
       
       {/* Stats Section */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div className="card">
-          <div className="flex items-center mb-4">
-            <div className="bg-primary/20 p-3 rounded-full mr-3">
-              <FaStar className="text-primary text-xl" />
+          <div className="flex items-center mb-6">
+            <div className="bg-primary/20 p-4 rounded-full mr-4">
+              <FaStar className="text-primary text-2xl" />
             </div>
             <div>
-              <h3 className="font-display text-lg">Level Progress</h3>
-              <p className="text-text-muted text-sm">Level {currentUser.level} → {nextLevel}</p>
+              <h3 className="font-display text-xl">Level Progress</h3>
+              <p className="text-text-muted text-base">Level {currentUser.level} → {nextLevel}</p>
             </div>
           </div>
           <ProgressBar 
@@ -109,37 +109,37 @@ const Dashboard = () => {
         </div>
         
         <div className="card">
-          <div className="flex items-center mb-4">
-            <div className="bg-secondary/20 p-3 rounded-full mr-3">
-              <FaClipboardList className="text-secondary text-xl" />
+          <div className="flex items-center mb-6">
+            <div className="bg-secondary/20 p-4 rounded-full mr-4">
+              <FaClipboardList className="text-secondary text-2xl" />
             </div>
             <div>
-              <h3 className="font-display text-lg">Completed Chores</h3>
-              <p className="text-text-muted text-sm">This week</p>
+              <h3 className="font-display text-xl">Completed Chores</h3>
+              <p className="text-text-muted text-base">This week</p>
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-display font-bold">{currentUser.choreHistory.length}</span>
-            <Link to="/chores" className="text-secondary hover:text-secondary-light flex items-center">
-              View All <FaArrowRight className="ml-1" />
+            <span className="text-4xl font-display font-bold">{currentUser.choreHistory.length}</span>
+            <Link to="/chores" className="text-secondary hover:text-secondary-light flex items-center text-base">
+              View All <FaArrowRight className="ml-2" />
             </Link>
           </div>
         </div>
         
         <div className="card">
-          <div className="flex items-center mb-4">
-            <div className="bg-accent/20 p-3 rounded-full mr-3">
-              <FaStore className="text-accent text-xl" />
+          <div className="flex items-center mb-6">
+            <div className="bg-accent/20 p-4 rounded-full mr-4">
+              <FaStore className="text-accent text-2xl" />
             </div>
             <div>
-              <h3 className="font-display text-lg">Available Points</h3>
-              <p className="text-text-muted text-sm">For rewards</p>
+              <h3 className="font-display text-xl">Available Points</h3>
+              <p className="text-text-muted text-base">For rewards</p>
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-display font-bold text-accent">{currentUser.points}</span>
-            <Link to="/marketplace" className="text-accent hover:text-accent-light flex items-center">
-              Redeem <FaArrowRight className="ml-1" />
+            <span className="text-4xl font-display font-bold text-accent">{currentUser.points}</span>
+            <Link to="/marketplace" className="text-accent hover:text-accent-light flex items-center text-base">
+              Redeem <FaArrowRight className="ml-2" />
             </Link>
           </div>
         </div>
@@ -154,7 +154,7 @@ const Dashboard = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {suggestedChores.map(chore => (
             <ChoreCard key={chore.id} chore={chore} />
           ))}
@@ -162,7 +162,7 @@ const Dashboard = () => {
       </motion.div>
       
       {/* Recent Activity & Rewards Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <motion.div variants={itemVariants}>
           <div className="flex justify-between items-center mb-6">
             <h2 className="subheading">Recent Activity</h2>

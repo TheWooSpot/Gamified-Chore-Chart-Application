@@ -45,8 +45,8 @@ const ChoreList = () => {
           <p className="text-text-muted">Try adjusting your filter settings to see more chores.</p>
         </motion.div>
       ) : (
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

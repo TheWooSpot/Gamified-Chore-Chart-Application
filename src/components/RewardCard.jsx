@@ -29,7 +29,6 @@ const RewardCard = ({ reward }) => {
   return (
     <motion.div
       className={`card h-full ${isRedeemed ? 'opacity-70' : ''}`}
-      whileHover={{ scale: 1.02 }}
       initial={{ opacity: 0.8, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
@@ -51,12 +50,12 @@ const RewardCard = ({ reward }) => {
         </div>
       </div>
       
-      <h3 className="font-display text-xl mb-2">{reward.name}</h3>
-      <p className="text-text-muted mb-4">{reward.description}</p>
-      
-      <div className="flex items-center mb-4">
-        <FaStar className="text-accent mr-1" />
-        <span className="font-bold">{reward.points} points</span>
+      <h3 className="font-display text-2xl mb-3">{reward.name}</h3>
+      <p className="text-text-muted mb-6 text-base leading-relaxed">{reward.description}</p>
+
+      <div className="flex items-center mb-6">
+        <FaStar className="text-accent mr-2 text-xl" />
+        <span className="font-bold text-lg">{reward.points} points</span>
       </div>
       
       {showConfirmation ? (
@@ -65,13 +64,13 @@ const RewardCard = ({ reward }) => {
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={cancelRedeem}
-              className="py-2 px-4 rounded-xl font-bold bg-background-dark hover:bg-background text-text-muted transition-all duration-200"
+              className="py-3 px-5 rounded-xl font-bold text-base bg-background-dark hover:bg-background text-text-muted transition-all duration-200"
             >
               Cancel
             </button>
             <button
               onClick={confirmRedeem}
-              className="py-2 px-4 rounded-xl font-bold bg-success hover:bg-success/80 text-white transition-all duration-200"
+              className="py-3 px-5 rounded-xl font-bold text-base bg-success hover:bg-success/80 text-white transition-all duration-200"
             >
               Confirm
             </button>
