@@ -66,10 +66,7 @@ const EnhancedMarketplace = () => {
       : 0;
 
     return (
-      <motion.div
-        initial={{ opacity: 0.9, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, delay: index * 0.03, ease: 'easeOut' }}
+      <div
         className="card-impact relative group"
         onClick={() => setSelectedReward(reward)}
       >
@@ -157,7 +154,7 @@ const EnhancedMarketplace = () => {
             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
-      </motion.div>
+      </div>
     );
   };
 

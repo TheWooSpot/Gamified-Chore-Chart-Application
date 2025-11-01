@@ -50,12 +50,7 @@ const ChoreCard = ({ chore }) => {
         />
       )}
       
-      <motion.div
-        className={`card h-full ${isCompleted ? 'opacity-70' : ''}`}
-        initial={{ opacity: 0.8, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
-      >
+      <div className={`card h-full ${isCompleted ? 'opacity-70' : ''}`}>
         <div className="relative">
           <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl mb-4 flex items-center justify-center text-6xl">
             {categoryIcons[chore.category.toLowerCase()] || '📋'}
@@ -101,7 +96,7 @@ const ChoreCard = ({ chore }) => {
             'Mark as Complete'
           )}
         </button>
-      </motion.div>
+      </div>
     </>
   )
 }

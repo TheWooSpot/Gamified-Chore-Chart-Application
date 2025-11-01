@@ -27,12 +27,7 @@ const RewardCard = ({ reward }) => {
   }
   
   return (
-    <motion.div
-      className={`card h-full ${isRedeemed ? 'opacity-70' : ''}`}
-      initial={{ opacity: 0.8, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, ease: 'easeOut' }}
-    >
+    <div className={`card h-full ${isRedeemed ? 'opacity-70' : ''}`}>
       <div className="relative">
         <img
           src={reward.image}
@@ -98,7 +93,7 @@ const RewardCard = ({ reward }) => {
           )}
         </button>
       )}
-    </motion.div>
+    </div>
   )
 }
 
