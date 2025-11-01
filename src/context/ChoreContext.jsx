@@ -10,7 +10,6 @@ export const ChoreProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
   const [filteredChores, setFilteredChores] = useState([])
   const [filters, setFilters] = useState({
-    ageGroup: 'all',
     category: 'all',
     difficulty: 'all',
     search: ''
@@ -38,27 +37,23 @@ export const ChoreProvider = ({ children }) => {
 
   useEffect(() => {
     let result = [...chores]
-    
-    if (filters.ageGroup !== 'all') {
-      result = result.filter(chore => chore.ageGroup === filters.ageGroup)
-    }
-    
+
     if (filters.category !== 'all') {
       result = result.filter(chore => chore.category === filters.category)
     }
-    
+
     if (filters.difficulty !== 'all') {
       result = result.filter(chore => chore.difficulty === filters.difficulty)
     }
-    
+
     if (filters.search) {
       const searchLower = filters.search.toLowerCase()
-      result = result.filter(chore => 
-        chore.name.toLowerCase().includes(searchLower) || 
-        chore.description.toLowerCase().includes(searchLower)
+      result = result.filter(chore =>
+        (chore.title || chore.name || '').toLowerCase().includes(searchLower) ||
+        (chore.description || '').toLowerCase().includes(searchLower)
       )
     }
-    
+
     setFilteredChores(result)
   }, [chores, filters])
 

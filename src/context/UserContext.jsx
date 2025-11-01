@@ -68,34 +68,34 @@ export const UserProvider = ({ children }) => {
   }
 
   const addChoreToHistory = (userId, chore) => {
-    setUsers(prevUsers => 
-      prevUsers.map(user => 
-        user.id === userId 
-          ? { 
-              ...user, 
+    setUsers(prevUsers =>
+      prevUsers.map(user =>
+        user.id === userId
+          ? {
+              ...user,
               choreHistory: [
-                { 
+                {
                   id: Date.now().toString(),
                   choreId: chore.id,
-                  choreName: chore.name,
+                  choreName: chore.title || chore.name,
                   points: chore.points,
                   completedAt: new Date().toISOString()
                 },
                 ...user.choreHistory
               ]
-            } 
+            }
           : user
       )
     )
-    
+
     if (currentUser.id === userId) {
       setCurrentUser(prev => ({
         ...prev,
         choreHistory: [
-          { 
+          {
             id: Date.now().toString(),
             choreId: chore.id,
-            choreName: chore.name,
+            choreName: chore.title || chore.name,
             points: chore.points,
             completedAt: new Date().toISOString()
           },

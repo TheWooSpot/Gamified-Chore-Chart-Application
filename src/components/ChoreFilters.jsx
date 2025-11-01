@@ -20,7 +20,6 @@ const ChoreFilters = () => {
   const clearFilters = () => {
     setSearchInput('')
     updateFilters({
-      ageGroup: 'all',
       category: 'all',
       difficulty: 'all',
       search: ''
@@ -37,7 +36,6 @@ const ChoreFilters = () => {
   
   const difficulties = ['all', 'easy', 'medium', 'hard']
   
-  const ageGroups = ['all', '0-5', '6-10', '11-15', '16-20']
   
   return (
     <div className="mb-8">
@@ -69,7 +67,7 @@ const ChoreFilters = () => {
             <FaFilter />
           </button>
           
-          {(filters.ageGroup !== 'all' || filters.category !== 'all' || filters.difficulty !== 'all' || filters.search) && (
+          {(filters.category !== 'all' || filters.difficulty !== 'all' || filters.search) && (
             <button 
               onClick={clearFilters}
               className="p-3 rounded-xl bg-error/20 text-error hover:bg-error/30 transition-colors duration-200"
@@ -89,26 +87,7 @@ const ChoreFilters = () => {
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-text-muted mb-2 font-bold">Age Group</label>
-              <div className="flex flex-wrap gap-2">
-                {ageGroups.map(age => (
-                  <button
-                    key={age}
-                    onClick={() => updateFilters({ ageGroup: age })}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${
-                      filters.ageGroup === age 
-                        ? 'bg-primary text-white' 
-                        : 'bg-background-dark text-text-muted hover:bg-background'
-                    }`}
-                  >
-                    {age === 'all' ? 'All Ages' : age}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-text-muted mb-2 font-bold">Category</label>
               <div className="flex flex-wrap gap-2">
@@ -153,19 +132,6 @@ const ChoreFilters = () => {
       {(filters.ageGroup !== 'all' || filters.category !== 'all' || filters.difficulty !== 'all' || filters.search) && (
         <div className="flex flex-wrap items-center gap-2 text-sm">
           <span className="text-text-muted">Active filters:</span>
-          
-          {filters.ageGroup !== 'all' && (
-            <span className="badge badge-primary">
-              Age: {filters.ageGroup}
-              <button 
-                onClick={() => updateFilters({ ageGroup: 'all' })}
-                className="ml-1 text-xs"
-                aria-label="Remove age filter"
-              >
-                ✕
-              </button>
-            </span>
-          )}
           
           {filters.category !== 'all' && (
             <span className="badge badge-primary">
