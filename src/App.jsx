@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 // Components
 import Navbar from './components/Navbar'
@@ -20,25 +19,21 @@ import { UserProvider } from './context/UserContext'
 import { ChoreProvider } from './context/ChoreContext'
 
 function App() {
-  const location = useLocation()
-  
   return (
     <UserProvider>
       <ChoreProvider>
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow container mx-auto px-4 py-8">
-            <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/chores" element={<ChoreList />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-                <Route path="/marketplace" element={<EnhancedMarketplace />} />
-                <Route path="/sponsor" element={<SponsorDashboard />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/chores" element={<ChoreList />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/marketplace" element={<EnhancedMarketplace />} />
+              <Route path="/sponsor" element={<SponsorDashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </main>
           <Footer />
         </div>

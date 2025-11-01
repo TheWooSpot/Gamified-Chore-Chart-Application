@@ -22,9 +22,10 @@ const UserSwitcher = () => {
         onClick={toggleDropdown}
         className="flex items-center space-x-2 bg-background-light rounded-xl p-2 hover:bg-background transition-colors duration-200"
       >
-        <img 
-          src={currentUser.avatar} 
+        <img
+          src={currentUser.avatar}
           alt={currentUser.name}
+          loading="eager"
           className="w-8 h-8 rounded-full"
         />
         <span className="font-medium">{currentUser.name}</span>
@@ -49,9 +50,10 @@ const UserSwitcher = () => {
                     user.id === currentUser.id ? 'bg-primary/10' : ''
                   }`}
                 >
-                  <img 
-                    src={user.avatar} 
+                  <img
+                    src={user.avatar}
                     alt={user.name}
+                    loading="eager"
                     className="w-8 h-8 rounded-full mr-2"
                   />
                   <div>

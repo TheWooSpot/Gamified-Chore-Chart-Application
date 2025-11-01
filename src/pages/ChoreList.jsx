@@ -23,11 +23,11 @@ const ChoreList = () => {
   
   return (
     <div>
-      <motion.h1 
+      <motion.h1
         className="heading mb-6"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0.95 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15 }}
       >
         Chore List
       </motion.h1>
@@ -35,11 +35,11 @@ const ChoreList = () => {
       <ChoreFilters />
       
       {filteredChores.length === 0 ? (
-        <motion.div 
+        <motion.div
           className="text-center py-12"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.95 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.15 }}
         >
           <h3 className="text-2xl font-display mb-4">No chores match your filters</h3>
           <p className="text-text-muted">Try adjusting your filter settings to see more chores.</p>

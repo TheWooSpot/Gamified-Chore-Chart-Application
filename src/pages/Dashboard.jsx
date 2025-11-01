@@ -191,6 +191,7 @@ const Dashboard = () => {
                     <img
                       src={reward.image_url}
                       alt={reward.title}
+                      loading="eager"
                       className="w-16 h-16 object-cover rounded-lg mr-4"
                     />
                     <div className="flex-grow">

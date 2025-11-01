@@ -61,8 +61,9 @@ const SponsorDashboard = () => {
 
   const StatCard = ({ icon: Icon, title, value, subtitle, gradient }) => (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0.9 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.15 }}
       className="glass-card p-6 hover:scale-105 transition-transform"
     >
       <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center mb-4`}>
@@ -81,8 +82,9 @@ const SponsorDashboard = () => {
 
     return (
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0.9 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15 }}
         className="glass-card p-6 hover:bg-white/80 transition-all"
       >
         <div className="flex gap-4">
@@ -149,8 +151,9 @@ const SponsorDashboard = () => {
   return (
     <div className="min-h-screen pb-20">
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0.95 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.15 }}
         className="mb-12"
       >
         <div className="flex items-center gap-4 mb-4">

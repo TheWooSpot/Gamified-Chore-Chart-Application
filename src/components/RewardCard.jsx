@@ -27,17 +27,18 @@ const RewardCard = ({ reward }) => {
   }
   
   return (
-    <motion.div 
+    <motion.div
       className={`card h-full ${isRedeemed ? 'opacity-70' : ''}`}
       whileHover={{ scale: 1.02 }}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0.8, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
     >
       <div className="relative">
-        <img 
-          src={reward.image} 
+        <img
+          src={reward.image}
           alt={reward.name}
+          loading="eager"
           className="w-full h-48 object-cover rounded-xl mb-4"
         />
         <div className="absolute top-2 right-2 flex space-x-2">

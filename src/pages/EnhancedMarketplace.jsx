@@ -67,9 +67,9 @@ const EnhancedMarketplace = () => {
 
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0.9, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.05 }}
+        transition={{ duration: 0.2, delay: index * 0.03, ease: 'easeOut' }}
         className="card-impact relative group"
         onClick={() => setSelectedReward(reward)}
       >
@@ -89,6 +89,7 @@ const EnhancedMarketplace = () => {
           <img
             src={reward.image_url}
             alt={reward.title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -192,6 +193,7 @@ const EnhancedMarketplace = () => {
             <img
               src={reward.image_url}
               alt={reward.title}
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

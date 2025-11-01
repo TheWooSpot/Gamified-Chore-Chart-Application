@@ -50,12 +50,12 @@ const ChoreCard = ({ chore }) => {
         />
       )}
       
-      <motion.div 
+      <motion.div
         className={`card h-full ${isCompleted ? 'opacity-70' : ''}`}
         whileHover={{ scale: 1.02 }}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0.8, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
       >
         <div className="relative">
           <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl mb-4 flex items-center justify-center text-6xl">
