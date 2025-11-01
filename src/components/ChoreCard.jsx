@@ -58,27 +58,22 @@ const ChoreCard = ({ chore }) => {
         transition={{ duration: 0.3 }}
       >
         <div className="relative">
-          <img 
-            src={chore.image} 
-            alt={chore.name}
-            className="w-full h-48 object-cover rounded-xl mb-4"
-          />
+          <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl mb-4 flex items-center justify-center text-6xl">
+            {categoryIcons[chore.category.toLowerCase()] || '📋'}
+          </div>
           <div className="absolute top-2 right-2 flex space-x-2">
             <span className={`badge ${difficultyColors[chore.difficulty]}`}>
               {chore.difficulty}
-            </span>
-            <span className={`badge age-${chore.ageGroup}`}>
-              {chore.ageGroup}
             </span>
           </div>
           <div className="absolute bottom-2 left-2 badge badge-primary">
             {categoryIcons[chore.category.toLowerCase()] || '📋'} {chore.category}
           </div>
         </div>
-        
-        <h3 className="font-display text-xl mb-2">{chore.name}</h3>
+
+        <h3 className="font-display text-xl mb-2">{chore.title}</h3>
         <p className="text-text-muted mb-4">{chore.description}</p>
-        
+
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center">
             <FaStar className="text-accent mr-1" />
@@ -86,7 +81,7 @@ const ChoreCard = ({ chore }) => {
           </div>
           <div className="flex items-center text-text-muted">
             <FaClock className="mr-1" />
-            <span>{chore.estimatedTime}</span>
+            <span>{chore.estimated_time} min</span>
           </div>
         </div>
         

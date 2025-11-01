@@ -2,25 +2,21 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FaStar, FaTrophy, FaClipboardList, FaStore, FaArrowRight } from 'react-icons/fa'
+import { supabase } from '../lib/supabase'
 
-// Components
 import UserSwitcher from '../components/UserSwitcher'
 import ProgressBar from '../components/ProgressBar'
 import ChoreCard from '../components/ChoreCard'
 import ActivityFeed from '../components/ActivityFeed'
-
-// Context
 import { useUser } from '../context/UserContext'
 import { useChore } from '../context/ChoreContext'
 
-// Sample data
-import { sampleRewards } from '../data/sampleData'
-
 const Dashboard = () => {
   const { currentUser } = useUser()
-  const { chores } = useChore()
+  const { chores, loading: choresLoading } = useChore()
   const [suggestedChores, setSuggestedChores] = useState([])
   const [popularRewards, setPopularRewards] = useState([])
+  const [rewardsLoading, setRewardsLoading] = useState(true)
   
   // Calculate level progress
   const nextLevel = currentUser.level + 1
@@ -29,21 +25,34 @@ const Dashboard = () => {
   const progress = ((currentUser.points - pointsFromLastLevel) / (pointsForNextLevel - pointsFromLastLevel)) * 100
   
   useEffect(() => {
-    // Get chores appropriate for user's age group
-    const ageAppropriateChores = chores.filter(
-      chore => chore.ageGroup === currentUser.ageGroup || chore.ageGroup === 'all'
-    )
-    
-    // Randomly select 3 chores
-    const shuffled = [...ageAppropriateChores].sort(() => 0.5 - Math.random())
-    setSuggestedChores(shuffled.slice(0, 3))
-    
-    // Get top 3 popular rewards
-    const sortedRewards = [...sampleRewards]
-      .filter(reward => reward.ageGroup === currentUser.ageGroup || reward.ageGroup === 'all')
-      .sort((a, b) => b.popularity - a.popularity)
-    setPopularRewards(sortedRewards.slice(0, 3))
-  }, [chores, currentUser])
+    if (chores.length > 0) {
+      const shuffled = [...chores].sort(() => 0.5 - Math.random())
+      setSuggestedChores(shuffled.slice(0, 3))
+    }
+  }, [chores])
+
+  useEffect(() => {
+    fetchPopularRewards()
+  }, [])
+
+  const fetchPopularRewards = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('rewards')
+        .select('*')
+        .eq('type', 'regular_reward')
+        .eq('is_active', true)
+        .order('points_cost', { ascending: true })
+        .limit(3)
+
+      if (error) throw error
+      setPopularRewards(data || [])
+    } catch (error) {
+      console.error('Error fetching rewards:', error)
+    } finally {
+      setRewardsLoading(false)
+    }
+  }
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -172,23 +181,29 @@ const Dashboard = () => {
           </div>
           <div className="card">
             <div className="space-y-4">
-              {popularRewards.map(reward => (
-                <div key={reward.id} className="flex items-center p-2 hover:bg-background rounded-lg transition-colors duration-200">
-                  <img 
-                    src={reward.image} 
-                    alt={reward.name}
-                    className="w-16 h-16 object-cover rounded-lg mr-4"
-                  />
-                  <div className="flex-grow">
-                    <h4 className="font-bold">{reward.name}</h4>
-                    <p className="text-text-muted text-sm">{reward.description}</p>
+              {rewardsLoading ? (
+                <div className="text-center py-8 text-text-muted">Loading rewards...</div>
+              ) : popularRewards.length === 0 ? (
+                <div className="text-center py-8 text-text-muted">No rewards available</div>
+              ) : (
+                popularRewards.map(reward => (
+                  <div key={reward.id} className="flex items-center p-2 hover:bg-background rounded-lg transition-colors duration-200">
+                    <img
+                      src={reward.image_url}
+                      alt={reward.title}
+                      className="w-16 h-16 object-cover rounded-lg mr-4"
+                    />
+                    <div className="flex-grow">
+                      <h4 className="font-bold">{reward.title}</h4>
+                      <p className="text-text-muted text-sm">{reward.description}</p>
+                    </div>
+                    <div className="flex items-center text-accent font-bold">
+                      <FaStar className="mr-1" />
+                      {reward.points_cost}
+                    </div>
                   </div>
-                  <div className="flex items-center text-accent font-bold">
-                    <FaStar className="mr-1" />
-                    {reward.points}
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         </motion.div>

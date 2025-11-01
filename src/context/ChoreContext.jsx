@@ -1,19 +1,14 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
-
-// Sample data
-import { sampleChores } from '../data/sampleData'
+import { supabase } from '../lib/supabase'
 
 const ChoreContext = createContext()
 
 export const useChore = () => useContext(ChoreContext)
 
 export const ChoreProvider = ({ children }) => {
-  const [chores, setChores] = useState(() => {
-    const savedChores = localStorage.getItem('choreChampChores')
-    return savedChores ? JSON.parse(savedChores) : sampleChores
-  })
-  
-  const [filteredChores, setFilteredChores] = useState(chores)
+  const [chores, setChores] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [filteredChores, setFilteredChores] = useState([])
   const [filters, setFilters] = useState({
     ageGroup: 'all',
     category: 'all',
@@ -22,8 +17,24 @@ export const ChoreProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    localStorage.setItem('choreChampChores', JSON.stringify(chores))
-  }, [chores])
+    fetchChores()
+  }, [])
+
+  const fetchChores = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('chores')
+        .select('*')
+        .order('points', { ascending: true })
+
+      if (error) throw error
+      setChores(data || [])
+    } catch (error) {
+      console.error('Error fetching chores:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     let result = [...chores]
@@ -64,6 +75,7 @@ export const ChoreProvider = ({ children }) => {
       chores,
       filteredChores,
       filters,
+      loading,
       updateFilters,
       getChoreById
     }}>
