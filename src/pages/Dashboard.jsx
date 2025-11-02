@@ -54,42 +54,20 @@ const Dashboard = () => {
     }
   }
   
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-  
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  }
   
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
+    <div>
       {/* Header Section */}
-      <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
         <div>
           <h1 className="heading">Welcome, {currentUser.name}!</h1>
           <p className="text-text-muted text-lg">Let's see what chores you can tackle today.</p>
         </div>
         <UserSwitcher />
-      </motion.div>
+      </div>
       
       {/* Stats Section */}
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div className="card">
           <div className="flex items-center mb-6">
             <div className="bg-primary/20 p-4 rounded-full mr-4">
@@ -143,10 +121,10 @@ const Dashboard = () => {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </div>
       
       {/* Suggested Chores Section */}
-      <motion.div variants={itemVariants} className="mb-12">
+      <div className="mb-12">
         <div className="flex justify-between items-center mb-6">
           <h2 className="subheading">Suggested Chores</h2>
           <Link to="/chores" className="text-primary hover:text-primary-light flex items-center">
@@ -159,20 +137,20 @@ const Dashboard = () => {
             <ChoreCard key={chore.id} chore={chore} />
           ))}
         </div>
-      </motion.div>
+      </div>
       
       {/* Recent Activity & Rewards Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        <motion.div variants={itemVariants}>
+        <div>
           <div className="flex justify-between items-center mb-6">
             <h2 className="subheading">Recent Activity</h2>
           </div>
           <div className="card">
             <ActivityFeed activities={currentUser.choreHistory.slice(0, 5)} />
           </div>
-        </motion.div>
-        
-        <motion.div variants={itemVariants}>
+        </div>
+
+        <div>
           <div className="flex justify-between items-center mb-6">
             <h2 className="subheading">Popular Rewards</h2>
             <Link to="/marketplace" className="text-primary hover:text-primary-light flex items-center">
@@ -207,9 +185,9 @@ const Dashboard = () => {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

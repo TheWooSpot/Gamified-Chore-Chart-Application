@@ -86,9 +86,8 @@ const EnhancedMarketplace = () => {
           <img
             src={reward.image_url}
             alt={reward.title}
-            loading="lazy"
+            loading="eager"
             className="w-full h-full object-cover"
-            style={{ willChange: 'transform' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
@@ -114,11 +113,9 @@ const EnhancedMarketplace = () => {
               <span>{fundingPercentage.toFixed(0)}%</span>
             </div>
             <div className="w-full h-2 bg-background-dark rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${fundingPercentage}%` }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="h-full bg-gradient-to-r from-success to-primary"
+              <div
+                style={{ width: `${fundingPercentage}%` }}
+                className="h-full bg-gradient-to-r from-success to-primary transition-all duration-500"
               />
             </div>
             <div className="flex justify-between text-xs mt-1">
@@ -170,13 +167,15 @@ const EnhancedMarketplace = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
         className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.9, y: 20 }}
-          animate={{ scale: 1, y: 0 }}
-          exit={{ scale: 0.9, y: 20 }}
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0.95 }}
+          transition={{ duration: 0.15 }}
           className="glass-card max-w-2xl w-full max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
@@ -317,12 +316,7 @@ const EnhancedMarketplace = () => {
 
   return (
     <div className="min-h-screen pb-20">
-      <motion.div
-        initial={{ opacity: 0.95 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.15 }}
-        className="mb-12 text-center"
-      >
+      <div className="mb-12 text-center">
         <h1 className="heading mb-4 animate-float">
           Global Impact Marketplace
         </h1>
@@ -342,7 +336,7 @@ const EnhancedMarketplace = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <div className="glass-card mb-8 p-6">
         <div className="flex flex-col md:flex-row gap-4 items-center">
@@ -420,11 +414,7 @@ const EnhancedMarketplace = () => {
       ) : (
         <>
           {selectedType !== 'regular_reward' && impactProjects.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mb-16"
-            >
+            <div className="mb-16">
               <div className="flex items-center gap-3 mb-6">
                 <FaGlobe className="text-success text-3xl" />
                 <h2 className="section-title">Global Impact Projects</h2>
@@ -435,14 +425,11 @@ const EnhancedMarketplace = () => {
                   <RewardCard key={reward.id} reward={reward} index={index} />
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {selectedType !== 'impact_project' && regularRewards.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
+            <div>
               <div className="flex items-center gap-3 mb-6">
                 <FaHeart className="text-secondary text-3xl" />
                 <h2 className="section-title">Personal Rewards</h2>
@@ -453,7 +440,7 @@ const EnhancedMarketplace = () => {
                   <RewardCard key={reward.id} reward={reward} index={index} />
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {filteredRewards.length === 0 && (

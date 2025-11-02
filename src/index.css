@@ -25,22 +25,25 @@ body {
 @layer components {
   .glass-card {
     @apply backdrop-blur-md bg-white/70 rounded-3xl border border-white/40 shadow-glass;
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
-    will-change: box-shadow, background-color;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .glass-card:hover {
-    @apply shadow-glass-hover bg-white/80;
+    @apply shadow-glass-hover;
+    transform: translateZ(0) scale(1.02);
   }
 
   .btn {
-    @apply font-bold py-5 px-10 rounded-2xl text-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 relative overflow-hidden;
-    will-change: transform, box-shadow;
+    @apply font-bold py-5 px-10 rounded-2xl text-xl transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-offset-2 relative overflow-hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .btn:hover {
     @apply shadow-xl;
-    transform: translateY(-2px);
+    transform: translateZ(0) translateY(-2px);
   }
 
   .btn-primary {
@@ -65,13 +68,14 @@ body {
 
   .card-impact {
     @apply glass-card p-8 cursor-pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    will-change: transform;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .card-impact:hover {
-    transform: translateY(-4px);
-    @apply shadow-glass-hover bg-white/80;
+    transform: translateZ(0) translateY(-6px);
+    @apply shadow-glass-hover border-primary/40;
   }
 
   .input {
