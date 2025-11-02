@@ -3,7 +3,7 @@ import { FaHeart, FaGithub, FaTwitter, FaInstagram, FaGlobe } from 'react-icons/
 
 const Footer = () => {
   return (
-    <footer className="glass-card mt-16 py-12">
+    <footer className="bg-surface border-t border-border mt-16 py-12 transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
@@ -77,7 +77,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-white/20 text-center">
+        <div className="pt-6 border-t border-border text-center">
           <p className="text-text-muted text-sm mb-3">
             © {new Date().getFullYear()} Chore Champions. Changing lives, one chore at a time.
           </p>

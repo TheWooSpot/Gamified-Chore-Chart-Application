@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useUser } from '../context/UserContext'
+import ThemeToggle from './ThemeToggle'
 
-// Icons
 import { FaHome, FaClipboardList, FaTrophy, FaStore, FaUser, FaBars, FaTimes, FaHeart } from 'react-icons/fa'
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
   
   return (
-    <header className="glass-card sticky top-0 z-50 mb-8">
+    <header className="bg-surface border-b border-border sticky top-0 z-50 mb-8 transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -52,7 +52,7 @@ const Navbar = () => {
                     className={`flex items-center px-4 py-3 rounded-2xl font-bold transition-all duration-300 ${
                       location.pathname === link.to
                         ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-glow-blue scale-105'
-                        : 'hover:bg-white/60 text-text-muted hover:text-text hover:scale-105'
+                        : 'hover:bg-surface-hover text-text-muted hover:text-text hover:scale-105'
                     }`}
                   >
                     <span className="mr-2 text-lg">{link.icon}</span>
@@ -63,9 +63,10 @@ const Navbar = () => {
             </ul>
           </nav>
 
-          {/* User Info - Desktop */}
-          <div className="hidden lg:flex items-center">
-            <div className="flex items-center mr-4">
+          {/* User Info & Theme Toggle - Desktop */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <ThemeToggle />
+            <div className="flex items-center">
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
@@ -76,20 +77,23 @@ const Navbar = () => {
                 <p className="text-xs text-text-muted">Level {currentUser.level}</p>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-accent/20 to-accent/10 backdrop-blur-sm rounded-2xl px-5 py-3 flex items-center border-2 border-accent/30">
+            <div className="bg-gradient-to-r from-accent/20 to-accent/10 rounded-2xl px-5 py-3 flex items-center border-2 border-accent/30">
               <span className="text-accent font-display font-bold text-xl">{currentUser.points}</span>
               <span className="ml-2 text-text-muted text-sm">pts</span>
             </div>
           </div>
           
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden text-2xl p-3 rounded-xl bg-white/60 hover:bg-white/80 text-text"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          {/* Theme Toggle & Mobile Menu Button */}
+          <div className="lg:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            <button
+              className="text-2xl p-3 rounded-xl bg-surface-hover text-text"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
         
         {/* Mobile Navigation */}
@@ -101,8 +105,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* User Info - Mobile */}
-            <div className="flex items-center mb-4 pb-4 border-b border-white/30">
+            <div className="flex items-center mb-4 pb-4 border-b border-border">
               <img
                 src={currentUser.avatar}
                 alt={currentUser.name}
@@ -126,7 +129,7 @@ const Navbar = () => {
                     className={`flex items-center px-4 py-3 rounded-2xl font-bold transition-all duration-200 ${
                       location.pathname === link.to
                         ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-glow-blue'
-                        : 'bg-white/40 text-text-muted hover:bg-white/60 hover:text-text'
+                        : 'bg-surface-hover text-text-muted hover:bg-border hover:text-text'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >

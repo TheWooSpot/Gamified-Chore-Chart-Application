@@ -24,7 +24,7 @@ const ChoreList = () => {
           <p className="text-text-muted">Try adjusting your filter settings to see more chores.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredChores.map(chore => (
             <ChoreCard key={chore.id} chore={chore} />
           ))}

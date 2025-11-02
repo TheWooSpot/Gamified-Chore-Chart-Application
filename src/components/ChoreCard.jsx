@@ -52,11 +52,11 @@ const ChoreCard = ({ chore }) => {
       
       <div className={`card h-full ${isCompleted ? 'opacity-70' : ''}`}>
         <div className="relative">
-          <div className="w-full h-48 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl mb-4 flex items-center justify-center text-6xl">
+          <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl mb-4 flex items-center justify-center text-6xl border border-border-light">
             {categoryIcons[chore.category.toLowerCase()] || '📋'}
           </div>
           <div className="absolute top-2 right-2 flex space-x-2">
-            <span className={`badge ${difficultyColors[chore.difficulty]}`}>
+            <span className={`badge ${difficultyColors[chore.difficulty]} text-white`}>
               {chore.difficulty}
             </span>
           </div>

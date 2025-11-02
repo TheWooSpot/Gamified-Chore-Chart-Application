@@ -14,31 +14,33 @@ import SponsorDashboard from './pages/SponsorDashboard'
 import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
 
-// Context
 import { UserProvider } from './context/UserContext'
 import { ChoreProvider } from './context/ChoreContext'
+import { ThemeProvider } from './context/ThemeContext'
 
 function App() {
   return (
-    <UserProvider>
-      <ChoreProvider>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow container mx-auto px-6 md:px-8 lg:px-12 py-12">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/chores" element={<ChoreList />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/marketplace" element={<EnhancedMarketplace />} />
-              <Route path="/sponsor" element={<SponsorDashboard />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </ChoreProvider>
-    </UserProvider>
+    <ThemeProvider>
+      <UserProvider>
+        <ChoreProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow container mx-auto px-6 md:px-8 lg:px-12 py-12">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/chores" element={<ChoreList />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/marketplace" element={<EnhancedMarketplace />} />
+                <Route path="/sponsor" element={<SponsorDashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </ChoreProvider>
+      </UserProvider>
+    </ThemeProvider>
   )
 }
 

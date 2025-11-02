@@ -22,11 +22,6 @@ export default {
           dark: '#5A078A',
           light: '#9D4EDD',
         },
-        background: {
-          DEFAULT: '#F8F9FA',
-          dark: '#E9ECEF',
-          light: '#FFFFFF',
-        },
         accent: {
           DEFAULT: '#FFB703',
           dark: '#FB8500',
@@ -47,11 +42,6 @@ export default {
           dark: '#D63050',
           light: '#F26588',
         },
-        text: {
-          DEFAULT: '#212529',
-          muted: '#6C757D',
-          light: '#ADB5BD',
-        },
         impact: {
           education: '#00B4D8',
           health: '#F72585',
@@ -59,7 +49,24 @@ export default {
           housing: '#FFB703',
           energy: '#FFC733',
           food: '#06D6A0',
-        }
+        },
+        background: {
+          DEFAULT: 'var(--color-background)',
+          secondary: 'var(--color-background-secondary)',
+        },
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          hover: 'var(--color-surface-hover)',
+        },
+        text: {
+          DEFAULT: 'var(--color-text)',
+          muted: 'var(--color-text-muted)',
+          light: 'var(--color-text-light)',
+        },
+        border: {
+          DEFAULT: 'var(--color-border)',
+          light: 'var(--color-border-light)',
+        },
       },
       fontFamily: {
         display: ['Fredoka One', 'cursive'],
@@ -83,8 +90,10 @@ export default {
         '3xl': '2rem',
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
-        'glass-hover': '0 12px 40px 0 rgba(31, 38, 135, 0.25)',
+        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'card-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+        'card-hover-dark': '0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3)',
         'inner-lg': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
         'glow-blue': '0 0 30px rgba(0, 180, 216, 0.4)',
         'glow-pink': '0 0 30px rgba(247, 37, 133, 0.4)',
