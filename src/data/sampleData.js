@@ -92,7 +92,7 @@ export const sampleUsers = [
   },
   {
     id: '6',
-    name: 'Ethan',
+    name: 'Sayana',
     avatar: 'https://images.pexels.com/photos/1462980/pexels-photo-1462980.jpeg?auto=compress&cs=tinysrgb&w=150',
     ageGroup: '0-5',
     points: 120,
@@ -110,7 +110,7 @@ export const sampleUsers = [
   },
   {
     id: '8',
-    name: 'Lucas',
+    name: 'Olio',
     avatar: 'https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=150',
     ageGroup: '0-5',
     points: 85,
