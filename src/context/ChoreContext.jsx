@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
+import { sampleChores } from '../data/sampleData'
 
 const ChoreContext = createContext()
 
@@ -27,9 +28,28 @@ export const ChoreProvider = ({ children }) => {
         .order('points', { ascending: true })
 
       if (error) throw error
-      setChores(data || [])
+      
+      // If no chores from database, use sample chores as fallback
+      if (!data || data.length === 0) {
+        // Map sample chores to match expected format (name -> title)
+        const mappedSampleChores = sampleChores.map(chore => ({
+          ...chore,
+          title: chore.name,
+          estimated_time: parseInt(chore.estimatedTime) || 15
+        }))
+        setChores(mappedSampleChores)
+      } else {
+        setChores(data)
+      }
     } catch (error) {
       console.error('Error fetching chores:', error)
+      // On error, also fallback to sample chores
+      const mappedSampleChores = sampleChores.map(chore => ({
+        ...chore,
+        title: chore.name,
+        estimated_time: parseInt(chore.estimatedTime) || 15
+      }))
+      setChores(mappedSampleChores)
     } finally {
       setLoading(false)
     }
